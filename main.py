@@ -1,21 +1,13 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 from pathlib import Path
 import uvicorn
 from ciphers.caesar import caesar_cipher
 from ciphers.fence import fence_encrypt, fence_decrypt
+from moduls.class_moduls import CaesarRequest, FenceDecryptRequest
 
 app = FastAPI()
 
 filePache = Path(__file__).resolve().parent
-
-class CaesarRequest(BaseModel):
-    text: str
-    offset: int
-    mode: str
-
-class FenceDecryptRequest(BaseModel):
-    text: str
 
 
 @app.get("/test")
